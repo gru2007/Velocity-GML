@@ -241,7 +241,7 @@ public class InitialLoginSessionHandler implements MinecraftSessionHandler {
             }
 
             if (response.statusCode() == 200) {
-              final GameProfile profile = GENERAL_GSON.fromJson(response.body(),
+              final GameProfile profile = GENERAL_GSON.fromJson(response.body().replace("-", ""),
                   GameProfile.class);
               // Not so fast, now we verify the public key for 1.19.1+
               if (inbound.getIdentifiedKey() != null
